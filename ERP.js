@@ -10,6 +10,7 @@ var querystring = require('querystring');
 var Promise = require('bluebird');
 
 var ERPNext = function (options) {
+    console.log("options :"+options);
     this.username = options.username;
     this.password = options.password;
     this.baseUrl = options.baseUrl;
@@ -52,6 +53,8 @@ ERPNext.prototype.getCustomersName = function () {
             jar: _this.cookieJar,
         }).then(function (customers) {
             customers = JSON.parse(customers);
+            console.log("inside getCustomersName function : ");
+            console.log(customers.data);
             return customers.data;
         });
     });
@@ -698,4 +701,3 @@ ERPNext.prototype.getPurchaseOrders = function () {
 }
 
 module.exports = ERPNext;
-
